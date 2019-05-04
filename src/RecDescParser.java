@@ -14,7 +14,7 @@ public class RecDescParser {
     private String input;   //string to be analyzed
     private int pos;      	//current position
 
-    public RecDescParser(String string) {
+    private RecDescParser(String string) {
         input = string;
         pos = 0;
     }
@@ -22,7 +22,7 @@ public class RecDescParser {
 
     /** Excpetion class for syntax errors */
     public class SyntaxError extends Exception {
-        public SyntaxError(int pos, char found, String description) {
+        SyntaxError(int pos, char found, String description) {
             super("Position " + pos + ", found '" + found + "', " + description);
         }
     };
@@ -60,7 +60,7 @@ public class RecDescParser {
      * Terminal symbol '\0' is used to detect end of input.
      * S0 is start symbol of the grammar.
      */
-    public void S0()  throws SyntaxError {
+    private void S0()  throws SyntaxError {
         S(); scan('\0');
     }
 
